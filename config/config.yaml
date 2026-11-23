@@ -1,0 +1,88 @@
+# ============================================
+# 城市人口分析与预测 - 项目配置
+# 所有路径均为「相对项目根目录」的相对路径，
+# 代码中统一先 os.chdir(PROJECT_ROOT)，避免硬编码本机绝对路径。
+# ============================================
+
+# ---- 输出目录 ----
+paths:
+  raw_data: "data/raw"
+  interim_data: "data/interim"
+  processed_data: "data/processed"
+  models_dir: "models"
+  figures_dir: "outputs/figures"
+  metrics_dir: "outputs/metrics"
+  output_dir: "outputs"
+
+# ---- 原始数据文件（放在 data/raw/ 下，文件名必须一致）----
+raw_files:
+  population_scale: "人口规模.xlsx"
+  urbanization_rate: "城镇化率.xlsx"
+  population_density: "人口密度.xlsx"
+  age_structure: "年龄结构.xlsx"
+  employment_info: "就业信息.xlsx"
+  wage_level: "工资水平.xlsx"
+  living_standard: "生活水平.xlsx"
+  submission_sample: "submission_sample.csv"
+
+# ---- 多 Sheet 文件的 Sheet 名（已按真实文件核查）----
+sheets:
+  employment_info:
+    - "城镇失业率"
+    - "从业人员数"
+    - "第一、二、三产业就业人数"     # 注意中间是顿号
+  wage_level:
+    - "职工平均工资"
+  living_standard:
+    - "人均可支配收入"
+    - "人均消费支出"
+    - "城镇居民消费支出"
+    - "农村居民消费支出"
+    - "城镇居民人均收入"
+    - "农村居民人均收入"
+
+# ---- 真实列名（脏数据修正的依据）----
+columns:
+  pop_city: "城市名称"
+  pop_year: "年份"
+  label: "常住人口（万人）"
+  hukou: "户籍人口（万人）"
+  age_city: "城市"                  # 年龄结构的城市列叫"城市"
+
+# ---- 模型超参数 ----
+models:
+  linear_regression:
+    name: "LinearRegression"
+    params: {}
+  random_forest:
+    name: "RandomForestRegressor"
+    params:
+      n_estimators: 150
+      max_depth: 8
+      random_state: 42
+      n_jobs: -1
+
+# ---- 数据划分（按时间切分，严禁随机打乱）----
+splitting:
+  train_end_year: 2018
+  val_start_year: 2019
+  val_end_year: 2021
+
+# ---- 预测 ----
+prediction:
+  method: "growth"         # 增长率两步法（对人口水平外推会造成系统性高估，已弃用）
+  target_year: 2023
+  window_years: 3
+  growth_bound: 0.06       # 单年预测增长率约束 ±6%
+  one_step_bound: 0.30     # 结果合理性兜底：两年累计相对 2021 年不超过 ±30%
+
+# ---- 缺失值处理 ----
+missing:
+  interpolate_method: "linear"
+  fill_strategy: "median"
+  drop_label_missing: true
+
+# ---- 图表 ----
+figures:
+  dpi: 300
+  font_family: "Microsoft YaHei"

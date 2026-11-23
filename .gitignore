@@ -1,0 +1,29 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+
+# ===== 虚拟环境 =====
+.venv/
+venv/
+env/
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== IDE =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== 数据（原始数据禁止上传公开仓库）=====
+data/raw/
+data/interim/
+
+# ===== 模型 =====
+models/*.pkl
+models/*.joblib

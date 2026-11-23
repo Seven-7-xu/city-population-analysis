@@ -1,0 +1,15 @@
+﻿table,rows,cols,cities,year_range,missing_cells,missing_rate
+population_scale,718,4,40,2001—2021,27,0.0094
+urbanization_rate,675,3,40,2003—2022,0,0.0
+population_density,758,3,40,2000—2022,0,0.0
+age_structure,118,5,40,2000—2020,35,0.0593
+wage_level,21,41,-,宽表（年份在列）,49,0.0569
+employment_info/城镇失业率,769,3,38,2000—2022,1,0.0004
+employment_info/从业人员数,762,3,35,2000—2021,0,0.0
+employment_info/第一、二、三产业就业人数,698,5,40,2002—2021,0,0.0
+living_standard/人均可支配收入,23,9,-,宽表（年份在列）,0,0.0
+living_standard/人均消费支出,24,9,-,宽表（年份在列）,0,0.0
+living_standard/城镇居民消费支出,29,13,-,宽表（年份在列）,39,0.1034
+living_standard/农村居民消费支出,23,13,-,宽表（年份在列）,40,0.1338
+living_standard/城镇居民人均收入,34,13,-,宽表（年份在列）,35,0.0792
+living_standard/农村居民人均收入,29,13,-,宽表（年份在列）,48,0.1273
